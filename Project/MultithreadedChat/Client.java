@@ -1,11 +1,11 @@
 import java.io.*;
 import java.net.*;
 
-public class ChatClient {
+public class Client {
 
     public static void main(String[] args) {
         if (args.length != 1) {
-            System.out.println("Usage: java ChatClient <your_name>");
+            System.out.println("Usage: java Client <your_name>");
             return;
         }
 
@@ -20,8 +20,6 @@ public class ChatClient {
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))
         ) {
             System.out.println("Connected to chat server as '" + clientName + "'");
-
-            // Send the client's name to the server immediately
             out.println(clientName);
 
             // Thread to listen for server messages
@@ -44,7 +42,7 @@ public class ChatClient {
             }
 
         } catch (IOException e) {
-            System.err.println("Connection error: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }

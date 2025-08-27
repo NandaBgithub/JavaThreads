@@ -74,9 +74,10 @@ public class Server {
             ServerSocket serverSocket = new ServerSocket(defaultPort);
         ){
             while(true){
+                // A user per thread
                 Socket clientSocket = serverSocket.accept();
                 SocketHandler user = new SocketHandler(clientSocket, userList);
-                user.start(); // Starts one user per thread
+                user.start(); 
             }
         } catch (IOException e){
             e.printStackTrace();
